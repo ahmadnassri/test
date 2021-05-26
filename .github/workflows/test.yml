@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      repository: ${{ fromJSON(steps.metadata.outputs.repository) }}
+      repository: ${{ steps.metadata.outputs.repository }}
 
     steps:
       - uses: actions/checkout@v2.3.4
@@ -24,6 +24,6 @@ jobs:
 
     steps:
       - run: echo foo
-        if: ${{ needs.metadata.outputs.repository.is_template }}
+        if: ${{ fromJSON(needs.metadata.outputs.repository).is_template }}
 
-      - run: echo ${{ needs.metadata.outputs.repository.is_template }}
+      - run: echo ${{ fromJSON(needs.metadata.outputs.repository).is_template }}
