@@ -1,0 +1,20 @@
+# ------------------------------------------------------------- #
+# Note: this file is automatically managed in template-template #
+# ------------------------------------------------------------- #
+
+on: pull_request_target
+
+name: pull_request_target
+
+jobs:
+  foo:
+    needs: metadata
+
+    timeout-minutes: 20
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo ${{ github.event.pull_request.head.ref }}
+      - run: echo ${{ github.event.pull_request.base.ref }}
+      - run: echo ${{ toJSON(github.event.pull_request) }}
