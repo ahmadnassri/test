@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ github.event.pull_request.head.ref }}
-      - run: echo ${{ github.event.pull_request.base.ref }}
-      - run: echo ${{ toJSON(github.event.pull_request) }}
+      - env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
