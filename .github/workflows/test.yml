@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo foo
+      - run: echo foo bar
         if: ${{ fromJSON(needs.metadata.outputs.repository).is_template }}
 
       - run: echo ${{ fromJSON(needs.metadata.outputs.repository).is_template }}
